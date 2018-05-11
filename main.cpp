@@ -139,7 +139,7 @@ void ship_ai() { //задание кораблей компьютера
         }
 
     } // конец задания трёхпалубников
-    for (j = 0; j < 3; j++){ // задание двухпалубников
+    for (j = 0; j < 3; j++) { // задание двухпалубников
 
         if (rand() % 2 == 1) { // корабль стоит вертикально
             possible = false;
@@ -159,22 +159,23 @@ void ship_ai() { //задание кораблей компьютера
                         pole_ai[ship2_ai[i][j].x][ship2_ai[i][j].y].info = 1; // задание точек корабля на поле
                         pole_ai[ship2_ai[i][j].x][ship2_ai[i][j].y].num_of_ship = 4 + j;
                         if (ship2_ai[i][j].x - 1 > -1)
-                            pole_ai[ship2_ai[i][j].x - 1][ship2_ai[i][j].y].info = 4; // задание на поле точек, находящихся слева от корабля, на которые нельзя ставить корабли
+                            pole_ai[ship2_ai[i][j].x -
+                                    1][ship2_ai[i][j].y].info = 4; // задание на поле точек, находящихся слева от корабля, на которые нельзя ставить корабли
                         if (ship2_ai[i][j].x + 1 < 10)
-                            pole_ai[ship2_ai[i][j].x + 1][ship2_ai[i][j].y].info = 4; // задание на поле точек, находящихся справа от корабля, на которые нельзя ставить корабли
+                            pole_ai[ship2_ai[i][j].x +
+                                    1][ship2_ai[i][j].y].info = 4; // задание на поле точек, находящихся справа от корабля, на которые нельзя ставить корабли
                     }
                     for (i = 0; i < 3; i++) {
                         if ((x - 1 + i > -1) && (y - 1 > -1) && (x - 1 + i < 10))
-                            pole_ai[x - 1 + i][y - 1].info = 4;  // задание на поле точек, находящихся выше корабля, на которые нельзя ставить корабли
+                            pole_ai[x - 1 + i][y -
+                                               1].info = 4;  // задание на поле точек, находящихся выше корабля, на которые нельзя ставить корабли
                         if ((x - 1 + i > -1) && (y + 2 < 10) && (x - 1 + i < 10))
-                            pole_ai[x - 1 + i][y + 2].info = 4;  // задание на поле точек, находящихся ниже корабля, на которые нельзя ставить корабли
+                            pole_ai[x - 1 + i][y +
+                                               2].info = 4;  // задание на поле точек, находящихся ниже корабля, на которые нельзя ставить корабли
                     }
                 }
             }
-        }
-
-
-        else { // корабль стоит горизонтально
+        } else { // корабль стоит горизонтально
             possible = false;
             while (!possible) {
                 y = rand() % 10;
@@ -192,23 +193,26 @@ void ship_ai() { //задание кораблей компьютера
                         pole_ai[ship2_ai[i][j].x][ship2_ai[i][j].y].info = 1; // задание точек корабля на поле
                         pole_ai[ship2_ai[i][j].x][ship2_ai[i][j].y].num_of_ship = 4 + j;
                         if (ship2_ai[i][j].y - 1 > -1)
-                            pole_ai[ship2_ai[i][j].x][ship2_ai[i][j].y - 1].info = 4; // задание на поле точек, находящихся выше корабля, на которые нельзя ставить корабли
+                            pole_ai[ship2_ai[i][j].x][ship2_ai[i][j].y -
+                                                      1].info = 4; // задание на поле точек, находящихся выше корабля, на которые нельзя ставить корабли
                         if (ship2_ai[i][j].y + 1 < 10)
-                            pole_ai[ship2_ai[i][j].x][ship2_ai[i][j].y + 1].info = 4; // задание на поле точек, находящихся ниже корабля, на которые нельзя ставить корабли
+                            pole_ai[ship2_ai[i][j].x][ship2_ai[i][j].y +
+                                                      1].info = 4; // задание на поле точек, находящихся ниже корабля, на которые нельзя ставить корабли
                     }
                     for (i = 0; i < 3; i++) {
                         if ((y - 1 + i > -1) && (x - 1 > -1) && (y - 1 + i < 10))
-                            pole_ai[x - 1][y - 1 + i].info = 4;  // задание на поле точек, находящихся левее корабля, на которые нельзя ставить корабли
+                            pole_ai[x - 1][y - 1 +
+                                           i].info = 4;  // задание на поле точек, находящихся левее корабля, на которые нельзя ставить корабли
                         if ((y - 1 + i > -1) && (x + 2 < 10) && (y - 1 + i < 10))
-                            pole_ai[x + 2][y - 1 + i].info = 4;  // задание на поле точек, находящихся правее корабля, на которые нельзя ставить корабли
+                            pole_ai[x + 2][y - 1 +
+                                           i].info = 4;  // задание на поле точек, находящихся правее корабля, на которые нельзя ставить корабли
                     }
                 }
             }
 
 
-
         } // конец задания двухпалубников
-
+    }
         for (j = 0; j < 4; j++) { //
             possible = false;
             while (!possible) {
@@ -240,12 +244,6 @@ void ship_ai() { //задание кораблей компьютера
 
 
     }
-
-
-
-
-
-}
 void point (){ //задание кораблей игрока
     int i;
     int j;
@@ -530,6 +528,7 @@ void player() { // считывает или определяет выстрел
         while (pole_ai[shot.x][shot.y].info != 0 && pole_ai[shot.x][shot.y].info != 1);
     }
     else {
+     //   xod_of_player == 1;
 
 
     }
@@ -544,26 +543,69 @@ if (xod_of_player == 1){
         }
         case 1: {
             pole_ai[shot.x][shot.y].info = 3;
+            dead_of_ships_ai ();
             break;
         }
     }
 }
 else {
-
-
+   // xod_of_player = true;
    }
-   win();
+}
+void graphic(){
+    int x,y;
+    printf("\n");
+    printf(" ");
+    for (x = 1;x <= 19;x++) printf("-");
+    printf("\n");
+    for (y = -1; y <= 9; y++) {
+        if (y != -1) {
+            printf("%i", y);
+            for (x = 1; x <= 21; x++) {
+                if (x % 2 == 1) printf("|");
+                else {
+                    switch (pole_player[(x - 2) / 2][y].info) {
+                        case 2: {
+                            printf("0");
+                            break;
+                        }
+                        case 3: {
+                            printf("1");
+                            break;
+                        }
+                        default: {
+                            printf("&");
+                            break;
+                        }
+                    }
+                }
+            }
+            printf("\n");
+            for (x = 1; x <= 22; x++) printf("-");
+        }
+        else {
+            printf(" ");
+            for (x = 1; x <= 21; x++) {
+                if (x % 2 == 1) printf("|");
+                else {
+                    printf("%i",(x-2)/2);
+                }
+            }
+        }
+        printf("\n");
+    }
 }
 int main() {
     int i,j;
     winner = 'n';
-    for (i=0;i<10;i++) // обнуление клеток полей и корабли не мертвы
+    for (i=0;i<10;i++) { // обнуление клеток полей и корабли не мертвы
         dead_ship_of_ai[i] = false; // все корабли живы
         dead_ship_of_player[i] = false; // все корабли живы
-        for (j=0;j<10;j++) {
+        for (j = 0; j < 10; j++) {
             pole_player[i][j].info = 0;
             pole_ai[i][j].info = 0;
         }
+    }
     //printf();
     scanf("%i%i%i%i",&ship4[0].x,&ship4[0].y,&ship4[3].x,&ship4[3].y); // координаты начала и конца
     //printf();
@@ -581,11 +623,26 @@ int main() {
                 pole_ai[i][j].info = 0;
             }
         }
-    if (rand()%2==1) xod_of_player = 1; // выбирается, кто ходит первым
-    else xod_of_player = 0;
+   if (rand()%2==1) xod_of_player = 1; // выбирается, кто ходит первым
+   else xod_of_player = 0;
+   /* xod_of_player = 1;
+    for (i=0;i<10;i++) {
+        for (j = 0; j < 10; j++) {
+            printf("%i ",pole_ai[i][j].info);
+        }
+        printf("\n");
+    } */
     while (winner == 'n') {
         player();
         shot_of_gamer();
+        graphic();
+        win();
+    /*    for (i = 0; i < 10; i++) {
+            for (j = 0; j < 10; j++) {
+                printf("%i ",pole_ai[j][i].info);
+            }
+            printf("\n");
+        } */
     }
     if (winner == 'a') {
         printf ("YOU LOSE");
