@@ -698,11 +698,13 @@ void shot_of_gamer(){ // работает с координатами выстр
     if (xod_of_player == true){ // ход игрока
         switch(pole_ai[shot.x][shot.y].info){
             case 0: { // не попал
+                printf("ПРОМАХ");
                 pole_ai[shot.x][shot.y].info = 2; // отметка на поле
                 xod_of_player = false; // смена хода
                 break;
             }
             case 1: { // попал
+                printf("ПОПАДАНИЕ");
                 pole_ai[shot.x][shot.y].info = 3; // отметка на поле
                 dead_of_ships_ai (); // убит ли корабль?
                 break;
@@ -712,11 +714,13 @@ void shot_of_gamer(){ // работает с координатами выстр
     else { // ход компьютера
         switch(pole_player[shot.x][shot.y].info) {
             case 0: { // не попал
+                printf("КОМПЬЮТЕР ВЫСТРЕЛИЛ В %i %i",shot.x,shot.y);
                 pole_player[shot.x][shot.y].info = 2; // отметка на поле
                 xod_of_player = true; // смена хода
                 break;
             }
             case 1: { // ПОПАЛ (для этого есть  shot_ai[2].(x or y)) нужно запомнить точку(-и) попадания!!!!!!!!!!!!!!!!!!
+                printf("КОМПЬЮТЕР ПОПАЛ В %i %i",shot.x,shot.y);
                 pole_player[shot.x][shot.y].info = 3; // отметка на поле
                 switch (hit) { // запоминание точек попадания в зависимоти от количества попаданий до этого момента
                     case 0:{ // до этого момента ни разу не попал
@@ -771,7 +775,7 @@ void graphic(){
                             break;
                         }
                         default: { // неоткрытая клетка
-                            printf("&");
+                            printf(" "); // & or SPACE
                             break;
                         }
                     }
@@ -864,13 +868,13 @@ int main() {
             pole_ai[i][j].info = 0;
         }
     }
-   // printf("Введите координаты начала и конца четырёхпалубника\n");
+    printf("Введите координаты начала и конца четырёхпалубника\n");
     scanf("%i%i%i%i",&ship4[0].x,&ship4[0].y,&ship4[3].x,&ship4[3].y); // координаты начала и конца
-   // printf("Введите координаты начала и конца первого трёхпалубника, затем координаты начала и конца второго трёхпалубника\n");
+    printf("Введите координаты начала и конца первого трёхпалубника, затем координаты начала и конца второго трёхпалубника\n");
     scanf("%i%i%i%i%i%i%i%i",&ship3[0][0].x,&ship3[0][0].y,&ship3[2][0].x,&ship3[2][0].y,&ship3[0][1].x,&ship3[0][1].y,&ship3[2][1].x,&ship3[2][1].y);  // координаты начала и конца
-   // printf("Введите координаты начала и конца двухпалубников\n");
+    printf("Введите координаты начала и конца двухпалубников\n");
     scanf("%i%i%i%i%i%i%i%i%i%i%i%i",&ship2[0][0].x,&ship2[0][0].y,&ship2[1][0].x,&ship2[1][0].y,&ship2[0][1].x,&ship2[0][1].y,&ship2[1][1].x,&ship2[1][1].y,&ship2[0][2].x,&ship2[0][2].y,&ship2[1][2].x,&ship2[1][2].y);  // координаты начала и конца
-   // printf("Введите координаты однопалубников\n");
+    printf("Введите координаты однопалубников\n");
     scanf("%i%i%i%i%i%i%i%i",&ship1[0].x,&ship1[0].y,&ship1[1].x,&ship1[1].y,&ship1[2].x,&ship1[2].y,&ship1[3].x,&ship1[3].y);  // координаты начала и конца
     point();
     srand ( time(NULL) );
@@ -884,20 +888,14 @@ int main() {
    if (rand()%2==1) xod_of_player = 1; // выбирается, кто ходит первым
    else xod_of_player = 0;
     xod_of_player = 1;
-    /* for (i=0;i<10;i++) {
-        for (j = 0; j < 10; j++) {
-            printf("%i ",pole_ai[i][j].info);
-        }
-        printf("\n");
-    } */
-    graphic_develop();
+  //  graphic_develop();
     graphic();
     while (winner == 'n') {
         player();
         shot_of_gamer();
         graphic();
         win();
-        graphic_develop();
+     //   graphic_develop();
     }
     if (winner == 'a') {
         printf ("YOU LOSE");
