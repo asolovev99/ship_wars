@@ -29,7 +29,7 @@ ship ship4_ai[4]; //[номер корабля] компьютер
 void graphic_develop(){
     int i,j;
     printf("\n\n");
-    printf(" компьютер  игрок\n");
+    printf(" компьютер                   игрок\n");
     for (i = 0; i < 10; i++) {
         for (j = 0; j < 10; j++) {
             printf("%i ", pole_ai[j][i].info);
@@ -341,7 +341,7 @@ void dead_of_ships_player () { // проверяет живы ли корабл�
     if (dead_ship_of_player[0] == false && pole_player[ship4[0].x][ship4[0].y].info == 3 &&
         pole_player[ship4[1].x][ship4[1].y].info == 3 && pole_player[ship4[2].x][ship4[2].y].info == 3 &&
         pole_player[ship4[3].x][ship4[3].y].info == 3) {
-        dead_ship_of_player[0] == true;
+        dead_ship_of_player[0] = true;
         hit = 0;
         for (j = 0; j < 4; j++) {
             if (ship4[j].x - 1 > -1 && pole_player[ship4[j].x - 1][ship4[j].y].info != 3)
@@ -363,7 +363,7 @@ void dead_of_ships_player () { // проверяет живы ли корабл�
         if (dead_ship_of_player[i] == false && pole_player[ship3[0][i - 1].x][ship3[0][i - 1].y].info == 3 &&
             pole_player[ship3[1][i - 1].x][ship3[1][i - 1].y].info == 3 &&
             pole_player[ship3[2][i - 1].x][ship3[2][i - 1].y].info == 3) {
-            dead_ship_of_player[i] == true;
+            dead_ship_of_player[i] = true;
             hit = 0;
             for (j = 0; j < 3; j++) {
                 if (ship3[j][i - 1].x - 1 > -1 && pole_player[ship3[j][i - 1].x - 1][ship3[j][i - 1].y].info != 3)
@@ -393,7 +393,7 @@ void dead_of_ships_player () { // проверяет живы ли корабл�
     for (i = 3; i <= 5; i++) {
         if (dead_ship_of_player[i] == false && pole_player[ship2[0][i - 3].x][ship2[0][i - 3].y].info == 3 &&
                 pole_player[ship2[1][i - 3].x][ship2[1][i - 3].y].info == 3) {
-            dead_ship_of_player[i] == true;
+            dead_ship_of_player[i] = true;
             hit = 0;
             for (j = 0; j < 2; j++) {
                 if (ship2[j][i - 3].x - 1 > -1 && pole_player[ship2[j][i - 3].x - 1][ship2[j][i - 3].y].info != 3)
@@ -422,7 +422,7 @@ void dead_of_ships_player () { // проверяет живы ли корабл�
     }
     for (i = 6; i <= 9; i++) {
         if (dead_ship_of_player[i] == false && pole_player[ship1[i-6].x][ship1[i-6].y].info == 3) {
-            dead_ship_of_player[i] == true;
+            dead_ship_of_player[i] = true;
             hit = 0;
             if (ship1[i-6].x - 1 > -1)
                 pole_player[ship1[i-6].x - 1][ship1[i-6].y].info = 2; // задание на поле точек, находящихся слева от корабля, на которые нельзя ставить корабли
@@ -444,7 +444,7 @@ void dead_of_ships_ai () {  // проверяет живы ли корабли �
     if (dead_ship_of_ai[0] == false && pole_ai[ship4_ai[0].x][ship4_ai[0].y].info == 3 &&
         pole_ai[ship4_ai[1].x][ship4_ai[1].y].info == 3 && pole_ai[ship4_ai[2].x][ship4_ai[2].y].info == 3 &&
         pole_ai[ship4_ai[3].x][ship4_ai[3].y].info == 3) {
-        dead_ship_of_ai[0] == true;
+        dead_ship_of_ai[0] = true;
         for (j = 0; j < 4; j++) {
            if (ship4_ai[j].x - 1 > -1 && pole_ai[ship4_ai[j].x - 1][ship4_ai[j].y].info != 3)
                pole_ai[ship4_ai[j].x - 1][ship4_ai[j].y].info = 2; // задание на поле точки, находящихся слева от точки корабля, на которые нельзя ставить корабли
@@ -465,7 +465,7 @@ void dead_of_ships_ai () {  // проверяет живы ли корабли �
         if (dead_ship_of_ai[i] == false && pole_ai[ship3_ai[0][i - 1].x][ship3_ai[0][i - 1].y].info == 3 &&
         pole_ai[ship3_ai[1][i - 1].x][ship3_ai[1][i - 1].y].info == 3 &&
         pole_ai[ship3_ai[2][i - 1].x][ship3_ai[2][i - 1].y].info == 3) {
-            dead_ship_of_ai[i] == true;
+            dead_ship_of_ai[i] = true;
             for (j = 0; j < 3; j++) {
                 if (ship3_ai[j][i - 1].x - 1 > -1 && pole_ai[ship3_ai[j][i - 1].x - 1][ship3_ai[j][i - 1].y].info != 3)
                     pole_ai[ship3_ai[j][i - 1].x - 1][ship3_ai[j][i -
@@ -494,7 +494,7 @@ void dead_of_ships_ai () {  // проверяет живы ли корабли �
     for (i = 3; i <= 5; i++) {
         if (dead_ship_of_ai[i] == false && pole_ai[ship2_ai[0][i - 3].x][ship2_ai[0][i - 3].y].info == 3 &&
             pole_ai[ship2_ai[1][i - 3].x][ship2_ai[1][i - 3].y].info == 3) {
-            dead_ship_of_ai[i] == true;
+            dead_ship_of_ai[i] = true;
             for (j = 0; j < 2; j++) {
                 if (ship2_ai[j][i - 3].x - 1 > -1 && pole_ai[ship2_ai[j][i - 3].x - 1][ship2_ai[j][i - 3].y].info != 3)
                     pole_ai[ship2_ai[j][i - 3].x - 1][ship2_ai[j][i -
@@ -522,7 +522,7 @@ void dead_of_ships_ai () {  // проверяет живы ли корабли �
     }
     for (i = 6; i <= 9; i++) {
             if (dead_ship_of_ai[i] == false && pole_ai[ship1_ai[i-6].x][ship1_ai[i-6].y].info == 3) {
-                dead_ship_of_ai[i] == true;
+                dead_ship_of_ai[i] = true;
 
                  if (ship1_ai[i-6].x - 1 > -1)
                      pole_ai[ship1_ai[i-6].x - 1][ship1_ai[i-6].y].info = 2; // задание на поле точек, находящихся слева от корабля, на которые нельзя ставить корабли
