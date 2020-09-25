@@ -1,6 +1,8 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <math.h>
 #include "windows.h"
+#include <time.h>
 struct pole {
     int info;
     int num_of_ship;
@@ -903,5 +905,6 @@ int main() {
     if (winner == 'p'){
         printf("YOU WIN");
     }
+    system("pause");
     return 0; //srand ( time(NULL) ); rand()%10
 }
